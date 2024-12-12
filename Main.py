@@ -39,3 +39,5 @@ def encode_data_in_image(image_path, data, output_path):
     new_img = Image.new("RGB", img.size)
     new_img.putdata(new_pixels)
     new_img.save(output_path)
+
+    print(f"Data encoded Successfully and saved to {output_path}")
