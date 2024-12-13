@@ -9,6 +9,7 @@ def encode_data_in_image(image_path, data, output_path):
 
     data += "|||END|||"
     binary_data = "".join(format(ord(char), "08b") for char in data)
+    print("Encoded Data is:", binary_data)
 
     if len(binary_data) > len(pixels) * 3:
         raise ValueError("Image is too small to hide thise data!")
@@ -41,3 +42,34 @@ def encode_data_in_image(image_path, data, output_path):
     new_img.save(output_path)
 
     print(f"Data encoded Successfully and saved to {output_path}")
+
+
+def decode_data_from_image(image_path):
+
+    img = Image.open(image_path)
+    img = img.convert("RGB")
+    pixels = list(img.getdata())
+
+    binary_data = ""
+    for pixel in pixels:
+        binary_data += str(pixel[0] & 1)
+        binary_data += str(pixel[1] & 1)
+        binary_data += str(pixel[2] & 1)
+
+    print("Binary data: ", binary_data)
+
+    delimiter = "".join(format(ord(char), "08b") for char in "|||END|||")
+    print("Decode Delimiter: ", delimiter)
+    end_index = binary_data.find(delimiter)
+    print("End Index: ", end_index)
+    if end_index == -1:
+        raise ValueError("Delimiter not found! No hidden data or corrupted image.")
+
+    binary_message = binary_data[:end_index]
+
+    text = ""
+    for i in range(0, len(binary_message), 8):
+        byte = binary_message[i : i + 8]
+        text += chr(int(byte, 2))
+
+    print(text)
