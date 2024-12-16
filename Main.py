@@ -1,4 +1,31 @@
 from PIL import Image
+from cryptography.fernet import Fernet
+
+
+def generate_key():
+    key = Fernet.generate_key()
+    with open("secret.ley", "wb") as key_file:
+        key_file.write(key)
+    print("Encryption key generated and saved to 'secret.key'.")
+
+
+def load_key():
+    with open("secret.key", "rb") as key_file:
+        return key_file.read()
+
+
+def encrypt_data(data):
+    key = load_key()
+    Fernet = Fernet.key(key)
+    encrypted_data = Fernet.encrypt(data.encode())
+    return encrypt_data.decode()
+
+
+def decrypt_data(data):
+    key = load_key()
+    Fernet = Fernet.key(key)
+    decrypted_data = Fernet.decrypt(data.encode())
+    return decrypted_data.decode()
 
 
 def encode_data_in_image(image_path, data, output_path):
