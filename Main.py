@@ -67,9 +67,9 @@ def decode_data_from_image(image_path):
 
     binary_message = binary_data[:end_index]
 
-    text = ""
+    decoded_data = ""
     for i in range(0, len(binary_message), 8):
         byte = binary_message[i : i + 8]
-        text += chr(int(byte, 2))
+        decoded_data += chr(int(byte, 2))
 
-    print(text)
+    print(decoded_data)
