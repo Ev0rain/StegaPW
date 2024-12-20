@@ -1,4 +1,31 @@
 from PIL import Image
+from cryptography.fernet import Fernet
+
+
+def generate_key():
+    key = Fernet.generate_key()
+    with open("secret.key", "wb") as key_file:
+        key_file.write(key)
+    print("Encryption key generated and saved to 'secret.key'.")
+
+
+def load_key():
+    with open("secret.key", "rb") as key_file:
+        return key_file.read()
+
+
+def encrypt_data(data):
+    key = load_key()
+    f = Fernet(key)
+    encrypted_data = f.encrypt(data.encode())
+    return encrypted_data
+
+
+def decrypt_data(data):
+    key = load_key()
+    f = Fernet(key)
+    decrypted_data = f.decrypt(data)
+    return decrypted_data.decode()
 
 
 def encode_data_in_image(image_path, data, output_path):
@@ -14,22 +41,23 @@ def encode_data_in_image(image_path, data, output_path):
     if len(binary_data) > len(pixels) * 3:
         raise ValueError("Image is too small to hide thise data!")
 
+    # Modify the LSBs of the pixels
     new_pixels = []
     binary_index = 0
     for pixel in pixels:
-        if binary_index < len(binary_data):
+        if binary_index < len(binary_data):  # Modify the red channel
             new_red = (pixel[0] & ~1) | int(binary_data[binary_index])
             binary_index += 1
         else:
             new_red = pixel[0]
 
-        if binary_index < len(binary_data):
+        if binary_index < len(binary_data):  # Modify the green channel
             new_green = (pixel[1] & ~1) | int(binary_data[binary_index])
             binary_index += 1
         else:
             new_green = pixel[1]
 
-        if binary_index < len(binary_data):
+        if binary_index < len(binary_data):  # Modify the blue channel
             new_blue = (pixel[2] & ~1) | int(binary_data[binary_index])
             binary_index += 1
         else:
