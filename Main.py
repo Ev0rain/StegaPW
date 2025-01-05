@@ -39,7 +39,7 @@ def encode_data_in_image(image_path, data, output_path):
     # print("Encoded Data is:", binary_data)
 
     if len(binary_data) > len(pixels) * 3:
-        raise ValueError("Image is too small to hide thise data!")
+        raise ValueError("Image is too small to hide this data!")
 
     # Modify the LSBs of the pixels
     new_pixels = []
@@ -101,3 +101,13 @@ def decode_data_from_image(image_path):
         decoded_data += chr(int(byte, 2))
 
     print(decoded_data)
+
+
+def add_password(image_path, password, output_path):
+    encrypted_password = encrypt_data(password)
+    encode_data_in_image(image_path, encrypted_password, output_path)
+
+
+def retrieve_password(image_path):
+    encrypted_password = decode_data_from_image(image_path)
+    return decrypt_data(encrypted_password)
