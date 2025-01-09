@@ -1,9 +1,9 @@
 import streamlit as st
 from Main import retrieve_password
 
-st.set_page_config(page_title="Decode Password")
+st.set_page_config(page_title="Decode Password,", page_icon="🔓")
 
-st.write("# Retrieve your password from an Image")
+st.write("# Retrieve your password from an Image 🔓")
 
 # Decode password from image
 st.header("Decode Password")

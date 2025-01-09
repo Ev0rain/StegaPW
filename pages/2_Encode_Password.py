@@ -1,14 +1,15 @@
 import streamlit as st
 from Main import add_password
 
-st.set_page_config(page_title="Encode Password")
+st.set_page_config(page_title="Encode Password", page_icon="🔒")
 
-st.write("# Hide your password within an image")
+st.write("# Hide your password within an image 🔒")
 
 # Encode password in image
 st.header("Encode Password")
 image_file = st.file_uploader("Upload Image", type=["png", "jpg"])
 password = st.text_input("Password to Encode")
+st.markdown(" - Make sure to use a strong password")
 output_path = st.text_input("Output Image Path", "output_image.png")
 
 if st.button("Encode"):
