@@ -1,5 +1,6 @@
 from PIL import Image
 from cryptography.fernet import Fernet
+import base64
 
 
 def generate_key():
@@ -18,13 +19,14 @@ def encrypt_data(data):
     key = load_key()
     f = Fernet(key)
     encrypted_data = f.encrypt(data.encode())
-    return encrypted_data
+    return base64.b64encode(encrypted_data).decode()
 
 
 def decrypt_data(data):
     key = load_key()
     f = Fernet(key)
-    decrypted_data = f.decrypt(data)
+    encrypted_data = base64.b64decode(data.encode())
+    decrypted_data = f.decrypt(encrypted_data)
     return decrypted_data.decode()
 
 
@@ -99,8 +101,8 @@ def decode_data_from_image(image_path):
     for i in range(0, len(binary_message), 8):
         byte = binary_message[i : i + 8]
         decoded_data += chr(int(byte, 2))
-
-    print(decoded_data)
+    # print(decoded_data)
+    return decoded_data
 
 
 def add_password(image_path, password, output_path):
