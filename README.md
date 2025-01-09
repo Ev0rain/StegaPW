@@ -19,14 +19,11 @@ Users can securely store passwords by encrypting them and embedding the encrypte
 - **Key Management**:
   - Generates and securely stores an encryption key for encrypting and decrypting passwords.
 
-## Prerequisites
+## Prerequisites and Installation
 
 - Python 3.7+
-- Required libraries:
-  - `Pillow`: For image manipulation.
-  - `cryptography`: For encryption and decryption.
-
-Install the dependencies using pip:
+- Clone the repository to your machine
+- Install dependecies trough `requirements.txt`
 
 ```bash
 pip install pillow cryptograph
