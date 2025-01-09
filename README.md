@@ -26,7 +26,7 @@ Users can securely store passwords by encrypting them and embedding the encrypte
 - Install dependencies trough `requirements.txt`
 
 ```bash
-pip freeze > requirements.txt
+pip install -r ./requirements.txt
 ```
 - Run the `StegaPW`
 ```bash
