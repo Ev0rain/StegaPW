@@ -28,6 +28,10 @@ Users can securely store passwords by encrypting them and embedding the encrypte
 ```bash
 pip freeze > requirements.txt
 ```
+- Run the `StegaPW`
+```bash
+streamlit run .\Home.py
+```
 
 ## How It Works
 
