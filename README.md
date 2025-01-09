@@ -23,7 +23,7 @@ Users can securely store passwords by encrypting them and embedding the encrypte
 
 - Python 3.7+
 - Clone the repository to your machine
-- Install dependecies trough `requirements.txt`
+- Install dependencies trough `requirements.txt`
 
 ```bash
 pip freeze > requirements.txt
