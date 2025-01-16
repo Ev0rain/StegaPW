@@ -5,6 +5,20 @@ st.set_page_config(page_title="Image Generator", page_icon="🎨")
 
 st.write("# Generate Images for StegaPW 🎨")
 
+st.markdown(
+    """
+    ### Create Custom Images for Steganography
+    Use this tool to generate blank images with optional patterns for embedding passwords.
+
+    ### Features:
+    - Specify the dimensions and background color of the image.
+    - Choose patterns like **grid** or **stripes** for a visually distinct design.
+    - Save the image locally for later use in encoding passwords.
+
+    **Tip**: Experiment with patterns to make your images more unique and less likely to be altered.
+    """
+)
+
 # Generate Image
 width = st.number_input("Width (px)", value=300, min_value=10, step=10)
 height = st.number_input("Height (px)", value=300, min_value=10, step=10)

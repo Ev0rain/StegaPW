@@ -5,6 +5,21 @@ st.set_page_config(page_title="Encode Password", page_icon="🔒")
 
 st.write("# Hide your password within an image 🔒")
 
+st.markdown(
+    """
+    ### Hide Your Passwords Securely
+    This tool allows you to embed an encrypted password within an image file.
+
+    ### Steps:
+    1. Upload an image file (PNG or JPG recommended).
+    2. Enter the password you want to hide.
+    3. Specify a name for the output image file.
+    4. Click "Encode" to hide your password.
+
+    **Tip**: Choose a high-resolution image to accommodate more hidden data.
+    """
+)
+
 # Encode password in image
 st.header("Encode Password")
 image_file = st.file_uploader("Upload Image", type=["png", "jpg"])

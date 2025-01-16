@@ -7,8 +7,16 @@ st.write("# Generate your key 🔑")
 
 st.markdown(
     """
-    To encrypt and decrypt your passwords, you need a key.  
-    This will generate a key for you, that will be used for encryption and decryption.
+    ### What is a Key?
+    The encryption key is a **unique secret** that encrypts and decrypts your passwords.  
+    Without it, you won't be able to retrieve your stored passwords.
+
+    ### Instructions:
+    1. Click the button below to generate a secure key.
+    2. The key will be saved locally as a file named `secret.key`.
+    3. Ensure you keep this file safe, as it’s crucial for decrypting your passwords.
+
+    **Note**: Losing the key means losing access to your passwords!
     """
 )
 
