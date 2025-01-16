@@ -1,5 +1,6 @@
 import streamlit as st
 from Main import retrieve_password
+import os
 
 st.set_page_config(page_title="Decode Password,", page_icon="🔓")
 
@@ -14,7 +15,7 @@ st.markdown(
     1. Upload the image file containing the hidden password.
     2. Click "Decode" to retrieve the password.
 
-    **Important**: Ensure the encryption key (`secret.key`) is present, as it’s required for decryption.
+    **:red[Important]**: Ensure the encryption key (`secret.key`) is present, as it’s required for decryption.
     """
 )
 
@@ -31,3 +32,5 @@ if st.button("Decode"):
             st.success(f"Retrieved Password: {password}")
         except Exception as e:
             st.error(f"Error: {e}")
+        finally:
+            os.remove("temp_decode_image.png")

@@ -1,5 +1,6 @@
 import streamlit as st
 from Main import add_password
+import os
 
 st.set_page_config(page_title="Encode Password", page_icon="🔒")
 
@@ -15,6 +16,8 @@ st.markdown(
     2. Enter the password you want to hide.
     3. Specify a name for the output image file.
     4. Click "Encode" to hide your password.
+    
+    **:red[Important]**: Ensure the encryption key (`secret.key`) is present, as it’s required for decryption.
 
     **Tip**: Choose a high-resolution image to accommodate more hidden data.
     """
@@ -23,7 +26,7 @@ st.markdown(
 # Encode password in image
 st.header("Encode Password")
 image_file = st.file_uploader("Upload Image", type=["png", "jpg"])
-password = st.text_input("Password to Encode")
+password = st.text_input("Password to Encode", type="password")
 st.markdown(" - Make sure to use a strong password")
 output_path = st.text_input("Output Image Path", "output_image.png")
 
@@ -31,5 +34,8 @@ if st.button("Encode"):
     if image_file and password and output_path:
         with open("temp_image.png", "wb") as f:
             f.write(image_file.read())
-        add_password("temp_image.png", password, output_path)
-        st.success(f"Password encoded and saved to {output_path}")
+        try:
+            add_password("temp_image.png", password, output_path)
+            st.success(f"Password encoded and saved to {output_path}")
+        finally:
+            os.remove("temp_image.png")
