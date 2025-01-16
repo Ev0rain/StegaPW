@@ -5,6 +5,7 @@ st.set_page_config(page_title="Image Generator", page_icon="🎨")
 
 st.write("# Generate Images for StegaPW 🎨")
 
+# Generate Image
 width = st.number_input("Width (px)", value=300, min_value=10, step=10)
 height = st.number_input("Height (px)", value=300, min_value=10, step=10)
 color = st.color_picker("Background Color", value="#0000FF")

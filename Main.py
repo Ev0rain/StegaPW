@@ -118,7 +118,7 @@ def retrieve_password(image_path):
 
 
 def generate_image(
-    width, height, color, pattern=None, output_path="generated_iamge.png"
+    width, height, color, pattern=None, output_path="generated_image.png"
 ):
     img = Image.new("RGB", (width, height), color)
     draw = ImageDraw.Draw(img)
