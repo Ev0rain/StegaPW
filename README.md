@@ -32,6 +32,10 @@ pip install -r ./requirements.txt
 ```bash
 streamlit run .\Home.py
 ```
+- To stop the streamlit, head to terminal
+```bash
+Ctrl + C 
+```
 
 ## How It Works
 
