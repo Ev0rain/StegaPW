@@ -18,7 +18,13 @@ Main.decode_data_from_image("encoded_image.png")
 # Message = "Hello, World!"
 
 # Main.generate_key()
+# print("---Encryption Key:---")
 # print(Main.load_key())
+# print("")
+# print("---Original Message---")
+# print("Hello, World!")
+# print("")
+# print("---Encrypted Message---")
 # Encrypted_Message = Main.encrypt_data(Message)
 # print(Encrypted_Message)
 # Decrypted_Message = Main.decrypt_data(Encrypted_Message)
