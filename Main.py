@@ -1,19 +1,34 @@
 from PIL import Image, ImageDraw
 from cryptography.fernet import Fernet
 import base64
+import os
 
 
 # Generate a new encryption key
 def generate_key():
+
+    if not os.path.exists("keys"):
+        os.makedirs("keys")
+
+    key_file_path = os.path.join("keys", "secret.key")
+
     key = Fernet.generate_key()
-    with open("secret.key", "wb") as key_file:
+    with open(key_file_path, "wb") as key_file:
         key_file.write(key)
+
     print("Encryption key generated and saved to 'secret.key'.")
 
 
 # Load encryption key from file
 def load_key():
-    with open("secret.key", "rb") as key_file:
+    key_file_path = os.path.join("keys", "secret.key")
+
+    if not os.path.exists(key_file_path):
+        raise FileNotFoundError(
+            f"Key not found in '{key_file_path}'. Please generate or add your secret.key file"
+        )
+
+    with open(key_file_path, "rb") as key_file:
         return key_file.read()
 
 

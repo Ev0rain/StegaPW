@@ -28,14 +28,14 @@ st.header("Encode Password")
 image_file = st.file_uploader("Upload Image", type=["png", "jpg"])
 password = st.text_input("Password to Encode", type="password")
 st.markdown(" - Make sure to use a strong password")
-output_path = st.text_input("Output Image Path", "output_image.png")
+output_name = st.text_input("Output Image Name", "output_image.png")
 
 if st.button("Encode"):
-    if image_file and password and output_path:
+    if image_file and password and output_name:
         with open("temp_image.png", "wb") as f:
             f.write(image_file.read())
         try:
-            add_password("temp_image.png", password, output_path)
-            st.success(f"Password encoded and saved to {output_path}")
+            add_password("temp_image.png", password, output_name)
+            st.success(f"Password encoded and saved to {output_name}")
         finally:
             os.remove("temp_image.png")
